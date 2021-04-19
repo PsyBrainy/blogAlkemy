@@ -3,7 +3,8 @@ package com.psybrainy.blogAlkemy.persistence.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
+
 
 @Entity
 @Table(name = "post")
@@ -26,5 +27,5 @@ public class PostEntity {
     private CategoryEntity category;
 
     @Column(name = "date")
-    private Date date;
+    private Timestamp date;
 }
