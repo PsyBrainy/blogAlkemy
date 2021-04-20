@@ -21,4 +21,8 @@ public class PostService {
     public Optional<Post> getPostById(long idPost){
         return repo.getPostById(idPost);
     }
+
+    public Post sava(Post post){
+        return repo.savePost(post);
+    }
 }

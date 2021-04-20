@@ -1,5 +1,6 @@
 package com.psybrainy.blogAlkemy.persistence.entity;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "post")
-@Data
+@Data @Builder
 public class PostEntity {
 
     @Id

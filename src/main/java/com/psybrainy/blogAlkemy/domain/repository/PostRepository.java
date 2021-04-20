@@ -11,4 +11,5 @@ public interface PostRepository {
 
     List<Post> getAll();
     Optional<Post> getPostById(long idPost);
+    Post savePost(Post post);
 }

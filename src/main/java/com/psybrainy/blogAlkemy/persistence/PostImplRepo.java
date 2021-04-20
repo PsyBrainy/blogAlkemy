@@ -33,6 +33,14 @@ public class PostImplRepo implements PostRepository {
 
     @Override
     public Optional<Post> getPostById(long idPost) {
+
         return repo.findById(idPost).map(postEntity -> mapper.toPost(postEntity));
+    }
+
+    @Override
+    public Post savePost(Post post) {
+
+        PostEntity postEntity = repo.save(mapper.toPostEntity(post));
+        return mapper.toPost(postEntity);
     }
 }
