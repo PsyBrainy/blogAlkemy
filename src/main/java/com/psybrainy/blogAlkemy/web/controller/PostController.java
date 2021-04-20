@@ -3,14 +3,18 @@ package com.psybrainy.blogAlkemy.web.controller;
 import com.psybrainy.blogAlkemy.domain.Post;
 import com.psybrainy.blogAlkemy.domain.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/post")
 public class PostController {
 
@@ -18,7 +22,20 @@ public class PostController {
     private PostService postService;
 
     @GetMapping
-    List<Post> getAll(){
-        return postService.getAll();
+    public String getAll(Model model){
+        List<Post> postList = postService.getAll();
+
+        model.addAttribute("posts", postList);
+
+        return "/views/post/homePostList";
+    }
+
+    @GetMapping("/{id}")
+    public String getPostById(@PathVariable("id") long idPost, Model model){
+        Post post = postService.getPostById(idPost).orElseThrow();
+
+        model.addAttribute("post", post);
+
+        return "/views/post/postById";
     }
 }

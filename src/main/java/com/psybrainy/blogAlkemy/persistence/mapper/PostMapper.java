@@ -11,8 +11,10 @@ public class PostMapper {
 
         return Post
                 .builder()
-                .id_post(postEntity.getId())
+                .idPost(postEntity.getId().toString())
                 .title(postEntity.getTitle())
+                .content(postEntity.getContent())
+                .image(postEntity.getImage())
                 .date(postEntity.getDate())
                 .category(postEntity.getCategory().getName())
                 .build();

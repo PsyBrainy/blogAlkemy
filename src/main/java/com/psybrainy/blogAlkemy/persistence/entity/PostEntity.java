@@ -22,6 +22,9 @@ public class PostEntity {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "image")
+    private String image;
+
     @ManyToOne
     @JoinColumn(name = "id_category", insertable = false, updatable = false)
     private CategoryEntity category;

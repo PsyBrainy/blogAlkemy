@@ -4,10 +4,11 @@ import com.psybrainy.blogAlkemy.domain.Post;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PostRepository {
 
     List<Post> getAll();
-    Post getPostById(long idPost);
+    Optional<Post> getPostById(long idPost);
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
@@ -31,7 +32,7 @@ public class PostImplRepo implements PostRepository {
     }
 
     @Override
-    public Post getPostById(long idPost) {
-        return null;
+    public Optional<Post> getPostById(long idPost) {
+        return repo.findById(idPost).map(postEntity -> mapper.toPost(postEntity));
     }
 }
