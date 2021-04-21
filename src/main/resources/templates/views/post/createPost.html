@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+    <meta charset="UTF-8">
+    <title>Blog Alkemy</title>
+</head>
+<body>
+    <header th:replace="plantilla/template :: header"></header>
+
+    <div class="container">
+    
+        <div class="card">
+            
+            <div class="card-header bg-dark bg-white" th:text="${title}"></div>
+            <div class="card-body"></div>
+
+            <form action="@{/post/savePost}" th:object="${post}">
+            
+            <input class="form-control form-control-lg" type="text" id="title" th:field="*{title}" placeholder="Titulo" aria-label="title">
+
+            <div class="mb-3">
+                <label for="content" class="form-label" th:field="*{content}">Contenido de post</label>
+                <textarea class="form-control" id="content" rows="3"></textarea>
+            </div>
+            
+
+            <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            </select>
+            
+            </form>
+
+            
+
+        </div>
+
+    </div>
+    
+    <footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html>
