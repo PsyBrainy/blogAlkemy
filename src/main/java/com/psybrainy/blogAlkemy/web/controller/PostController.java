@@ -3,11 +3,11 @@ package com.psybrainy.blogAlkemy.web.controller;
 import com.psybrainy.blogAlkemy.domain.Post;
 import com.psybrainy.blogAlkemy.domain.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +34,22 @@ public class PostController {
         model.addAttribute("post", post);
 
         return "/views/post/postById";
+    }
+
+    @GetMapping("/createPost")
+    public String create(Model model){
+        Post post = new Post();
+
+        model.addAttribute("title", "Crear nuevo Post");
+        model.addAttribute("post", post);
+
+        return "/views/post/createPost";
+    }
+
+    @PostMapping("/savePost")
+    public String savePost(@ModelAttribute Post post){
+        postService.save(post);
+
+        return "rediret:/views/post/homePostList";
     }
 }

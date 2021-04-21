@@ -1,7 +1,9 @@
 package com.psybrainy.blogAlkemy.persistence.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -9,7 +11,8 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "post")
-@Data @Builder
+@Data @Builder @NoArgsConstructor
+@AllArgsConstructor
 public class PostEntity {
 
     @Id
@@ -27,7 +30,7 @@ public class PostEntity {
     private String image;
 
     @ManyToOne
-    @JoinColumn(name = "id_category", insertable = false, updatable = false)
+    @JoinColumn(name = "id_category")
     private CategoryEntity category;
 
     @Column(name = "date")

@@ -32,7 +32,7 @@ public class PostMapper {
                 .title(post.getTitle())
                 .content(post.getContent())
                 .image(post.getImage())
-                .category(categoryCrud.findByName(post.getCategory()))
+                .category(categoryCrud.findByName(post.getCategory()).get())
                 .build();
     }
 }

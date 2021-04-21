@@ -22,7 +22,7 @@ public class PostService {
         return repo.getPostById(idPost);
     }
 
-    public Post sava(Post post){
-        return repo.savePost(post);
+    public void save(Post post){
+        repo.savePost(post);
     }
 }

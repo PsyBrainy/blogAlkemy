@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface CategoryCrudRepository extends CrudRepository<CategoryEntity, Long> {
 
-    CategoryEntity findByName(String name);
+    Optional<CategoryEntity> findByName(String name);
 }
